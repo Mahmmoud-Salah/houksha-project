@@ -7,7 +7,7 @@ const products = [
     reviews: 312,
     badge: 'Bestseller',
     description: 'Comfortable everyday sneakers built on a cushioned sole for all-day wear.',
-    image: 'https://images.unsplash.com/photo-1528701800489-4760c7dcc2f5?q=80&w=800&auto=format&fit=crop&crop=faces'
+    image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const products = [
     reviews: 148,
     badge: 'New',
     description: 'Full-grain leather jacket with a tailored cut and quilted lining.',
-    image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=800&auto=format&fit=crop&crop=faces'
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const products = [
     reviews: 526,
     badge: 'Bestseller',
     description: 'Active noise-cancelling over-ear headphones with 30-hour battery life.',
-    image: 'https://images.unsplash.com/photo-1518444023830-19b3f8d7de48?q=80&w=800&auto=format&fit=crop&crop=faces'
+    image: 'https://images.unsplash.com/photo-1599669454699-248893623440?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const products = [
     reviews: 204,
     badge: null,
     description: 'Brew cafe-style espresso at home with 15-bar pressure extraction.',
-    image: 'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=800&auto=format&fit=crop&crop=faces'
+    image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop'
   }
 ]
 export default products
