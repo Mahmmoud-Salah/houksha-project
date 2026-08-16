@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { BagIcon, ShieldIcon, TruckIcon, RefreshIcon } from '../components/Icons'
 
@@ -8,6 +8,7 @@ const SHIPPING_COST = 6.99
 
 export default function CartPage(){
   const { cart, removeItem, updateQuantity, clearCart } = useCart()
+  const navigate = useNavigate()
   const subtotal = cart.reduce((s, it) => s + it.product.price * it.quantity, 0)
   const shipping = cart.length === 0 || subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST
   const total = subtotal + shipping
@@ -69,7 +70,7 @@ export default function CartPage(){
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
-            <button className="btn btn-accent btn-lg btn-block" onClick={() => alert('Checkout demo — integrate payments later')}>
+            <button className="btn btn-accent btn-lg btn-block" onClick={() => navigate('/checkout')}>
               Checkout
             </button>
             <div className="trust-mini" style={{ marginTop: 18, paddingTop: 18 }}>
