@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { BagIcon, ShieldIcon, TruckIcon, RefreshIcon } from '../components/Icons'
+import Price from '../components/Price'
 
 const FREE_SHIPPING_THRESHOLD = 75
 const SHIPPING_COST = 6.99
@@ -32,9 +33,9 @@ export default function CartPage(){
                 <div className="info">
                   <div className="top-row">
                     <strong>{it.product.name}</strong>
-                    <span className="line-price">${(it.product.price * it.quantity).toFixed(2)}</span>
+                    <span className="line-price"><Price amount={it.product.price * it.quantity} /></span>
                   </div>
-                  <p>${it.product.price.toFixed(2)} each</p>
+                  <p><Price amount={it.product.price} /> each</p>
                   <div className="row">
                     <div className="qty-stepper">
                       <button onClick={() => updateQuantity(it.product.id, it.quantity - 1)} aria-label="Decrease quantity">−</button>
@@ -53,22 +54,22 @@ export default function CartPage(){
             <h3>Order summary</h3>
             <div className="summary-row">
               <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span><Price amount={subtotal} /></span>
             </div>
             <div className="summary-row">
               <span>Shipping</span>
-              <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+              <span>{shipping === 0 ? 'Free' : <Price amount={shipping} />}</span>
             </div>
             {shipping > 0 && (
               <div className="summary-row">
                 <span style={{ color: 'var(--accent-dark)' }}>
-                  Add ${(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)} more for free shipping
+                  Add <Price amount={FREE_SHIPPING_THRESHOLD - subtotal} /> more for free shipping
                 </span>
               </div>
             )}
             <div className="summary-row total">
               <span>Total</span>
-              <span>${total.toFixed(2)}</span>
+              <span><Price amount={total} /></span>
             </div>
             <button className="btn btn-accent btn-lg btn-block" onClick={() => navigate('/checkout')}>
               Checkout

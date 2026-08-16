@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { Stars } from './Icons'
+import Price from './Price'
 
 export default function ProductCard({product}){
   const { addItem } = useCart()
@@ -18,7 +19,7 @@ export default function ProductCard({product}){
       <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <h3>{product.name}</h3>
       </Link>
-      <p className="price">${product.price.toFixed(2)}</p>
+      <p className="price"><Price amount={product.price} /></p>
       <p className="muted">{product.description}</p>
       <div className="actions">
         <Link to={`/product/${product.id}`} className="btn btn-secondary">View</Link>

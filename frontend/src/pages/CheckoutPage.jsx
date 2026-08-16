@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import Price from '../components/Price'
 
 const FREE_SHIPPING_THRESHOLD = 75
 const SHIPPING_COST = 6.99
@@ -19,6 +20,10 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (cart.length === 0) {
       navigate('/cart', { replace: true })
+      return
+    }
+    if (!PUBLISHABLE_KEY) {
+      console.error('VITE_MOYASAR_PUBLISHABLE_KEY is not set — skipping Moyasar init')
       return
     }
     if (!window.Moyasar) {
@@ -50,15 +55,15 @@ export default function CheckoutPage() {
           <h3>Order summary</h3>
           <div className="summary-row">
             <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span><Price amount={subtotal} /></span>
           </div>
           <div className="summary-row">
             <span>Shipping</span>
-            <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+            <span>{shipping === 0 ? 'Free' : <Price amount={shipping} />}</span>
           </div>
           <div className="summary-row total">
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span><Price amount={total} /></span>
           </div>
           <Link to="/cart" className="link-btn">Back to cart</Link>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { TruckIcon, ShieldIcon, RefreshIcon, CheckCircleIcon } from './Icons'
 
 const items = [
-  { icon: TruckIcon, title: 'Free shipping', sub: 'On orders over $75' },
+  { icon: TruckIcon, title: 'Free shipping', sub: 'On orders over SAR 75' },
   { icon: RefreshIcon, title: 'Easy returns', sub: '30 days, no questions' },
   { icon: ShieldIcon, title: 'Secure checkout', sub: '256-bit encryption' },
   { icon: CheckCircleIcon, title: 'Quality checked', sub: 'Every item inspected' },

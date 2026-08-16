@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import products from '../data/products'
 import { useCart } from '../context/CartContext'
 import { Stars, TruckIcon, ShieldIcon, RefreshIcon } from '../components/Icons'
+import Price from '../components/Price'
 
 export default function ProductPage(){
   const { id } = useParams()
@@ -41,7 +42,7 @@ export default function ProductPage(){
             <span>{product.rating} · {product.reviews} reviews</span>
           </div>
           <div className="price-row">
-            <span className="price">${product.price.toFixed(2)}</span>
+            <span className="price"><Price amount={product.price} size={22} /></span>
           </div>
           <span className="in-stock">In stock, ready to ship</span>
           <p className="desc">{product.description}</p>
@@ -60,7 +61,7 @@ export default function ProductPage(){
           </div>
 
           <div className="trust-mini">
-            <span className="item"><TruckIcon width={15} height={15} /> Free shipping over $75</span>
+            <span className="item"><TruckIcon width={15} height={15} /> Free shipping over SAR 75</span>
             <span className="item"><ShieldIcon width={15} height={15} /> Secure checkout</span>
             <span className="item"><RefreshIcon width={15} height={15} /> 30-day returns</span>
           </div>

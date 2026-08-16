@@ -8,7 +8,7 @@ export default function Header(){
   const itemCount = cart.reduce((s, it) => s + it.quantity, 0)
   return (
     <>
-      <div className="announce">Free shipping on orders over $75 &nbsp;·&nbsp; 30-day easy returns</div>
+      <div className="announce">Free shipping on orders over SAR 75 &nbsp;·&nbsp; 30-day easy returns</div>
       <header className="header">
         <div className="header-inner">
           <Link to="/" className="brand">

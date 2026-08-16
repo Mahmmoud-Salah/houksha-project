@@ -16,7 +16,7 @@ export default function Hero(){
           <a href="#products" className="btn btn-secondary btn-lg">Browse bestsellers</a>
         </div>
         <div className="hero-trust">
-          <span className="item"><TruckIcon width={16} height={16} /> Free shipping over $75</span>
+          <span className="item"><TruckIcon width={16} height={16} /> Free shipping over SAR 75</span>
           <span className="item"><ShieldIcon width={16} height={16} /> Secure checkout</span>
           <span className="item"><RefreshIcon width={16} height={16} /> 30-day returns</span>
         </div>
