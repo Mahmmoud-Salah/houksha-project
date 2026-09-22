@@ -1,12 +1,39 @@
 import React from 'react'
 import { TruckIcon, ShieldIcon, RefreshIcon } from './Icons'
+import HeroCarousel from './HeroCarousel'
+import products from '../data/products'
+
+const HERO_SLIDES = [
+  {
+    src: 'https://images.unsplash.com/photo-1516762689617-e1cffcef479d?q=80&w=1000&auto=format&fit=crop',
+    alt: 'Featured flat-lay of Houksha essentials',
+  },
+  ...products.map(p => ({ src: p.image, alt: p.name })),
+]
+
+const HEADLINE_WORDS = [
+  { text: 'Goods' },
+  { text: 'worth' },
+  { text: 'keeping,', accent: 'keeping', suffix: ',' },
+  { text: 'delivered' },
+  { text: 'fast.' },
+]
 
 export default function Hero(){
   return (
     <section className="hero">
       <div>
         <span className="hero-eyebrow">New season, just landed</span>
-        <h1>Goods worth <span>keeping</span>, delivered fast.</h1>
+        <h1 className="hero-headline">
+          {HEADLINE_WORDS.map((word, i) => (
+            <React.Fragment key={word.text}>
+              <span className="word" style={{ '--w': i }}>
+                {word.accent ? <><span className="accent">{word.accent}</span>{word.suffix}</> : word.text}
+              </span>
+              {i < HEADLINE_WORDS.length - 1 && ' '}
+            </React.Fragment>
+          ))}
+        </h1>
         <p className="lead">
           A tightly curated shop of everyday essentials — built to last, priced fairly,
           and shipped in days, not weeks.
@@ -21,19 +48,18 @@ export default function Hero(){
           <span className="item"><RefreshIcon width={16} height={16} /> 30-day returns</span>
         </div>
       </div>
-      <div className="hero-visual">
-        <img
-          src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?q=80&w=1000&auto=format&fit=crop"
-          alt="Featured product styled on a clean backdrop"
-        />
-        <div className="hero-float-card">
-          <div>
-            <div className="label">Loved by shoppers</div>
-            <div className="sub stars">★★★★★</div>
+      <HeroCarousel
+        slides={HERO_SLIDES}
+        floatCard={
+          <div className="hero-float-card">
+            <div>
+              <div className="label">Loved by shoppers</div>
+              <div className="sub stars">★★★★★</div>
+            </div>
+            <div className="sub">4.8 average rating</div>
           </div>
-          <div className="sub">4.8 average rating</div>
-        </div>
-      </div>
+        }
+      />
     </section>
   )
 }

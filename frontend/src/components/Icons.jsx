@@ -51,12 +51,40 @@ export function CheckCircleIcon(props) {
   )
 }
 
+export function XCircleIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="10" />
+      <path d="m15 9-6 6" />
+      <path d="m9 9 6 6" />
+    </svg>
+  )
+}
+
+export function CopyIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="9" y="9" width="13" height="13" rx="2" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  )
+}
+
 export function BagIcon(props) {
   return (
     <svg {...base} {...props}>
       <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
       <path d="M3 6h18" />
       <path d="M16 10a4 4 0 0 1-8 0" />
+    </svg>
+  )
+}
+
+export function Logo({ size = 26, ...props }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" {...props}>
+      <rect x="4" y="4" width="18" height="18" rx="6" fill="var(--accent)" />
+      <circle cx="21" cy="21" r="9" fill="var(--accent-dark)" />
     </svg>
   )
 }

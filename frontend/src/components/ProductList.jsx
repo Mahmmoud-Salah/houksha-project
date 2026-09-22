@@ -3,8 +3,10 @@ import products from '../data/products'
 import ProductCard from './ProductCard'
 import Hero from './Hero'
 import TrustStrip from './TrustStrip'
+import { useInView } from '../hooks/useInView'
 
 export default function ProductList(){
+  const [gridRef, gridInView] = useInView()
   return (
     <>
       <Hero />
@@ -16,9 +18,9 @@ export default function ProductList(){
             <p>{products.length} handpicked products, ready to ship today.</p>
           </div>
         </div>
-        <div className="products">
-          {products.map(p => (
-            <ProductCard key={p.id} product={p} />
+        <div ref={gridRef} className={`products reveal-group${gridInView ? ' is-visible' : ''}`}>
+          {products.map((p, i) => (
+            <ProductCard key={p.id} product={p} index={i} />
           ))}
         </div>
       </section>

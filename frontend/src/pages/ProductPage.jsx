@@ -20,13 +20,13 @@ export default function ProductPage(){
 
   function handleBuyNow(){
     addItem(product, qty)
-    navigate('/cart')
+    navigate('/cart', { viewTransition: true })
   }
 
   return (
     <div>
       <div className="breadcrumb">
-        <Link to="/">Shop</Link>
+        <Link to="/" viewTransition>Shop</Link>
         <span>/</span>
         <span>{product.name}</span>
       </div>

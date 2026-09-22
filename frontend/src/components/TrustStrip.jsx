@@ -1,5 +1,6 @@
 import React from 'react'
 import { TruckIcon, ShieldIcon, RefreshIcon, CheckCircleIcon } from './Icons'
+import { useInView } from '../hooks/useInView'
 
 const items = [
   { icon: TruckIcon, title: 'Free shipping', sub: 'On orders over SAR 75' },
@@ -9,10 +10,11 @@ const items = [
 ]
 
 export default function TrustStrip(){
+  const [ref, inView] = useInView()
   return (
-    <div className="trust-strip">
-      {items.map(({ icon: Icon, title, sub }) => (
-        <div className="item" key={title}>
+    <div ref={ref} className={`trust-strip reveal-group${inView ? ' is-visible' : ''}`}>
+      {items.map(({ icon: Icon, title, sub }, i) => (
+        <div className="item reveal-item" style={{ '--stagger': i }} key={title}>
           <span className="ic"><Icon width={18} height={18} /></span>
           <span>
             <strong>{title}</strong>

@@ -6,7 +6,10 @@ import Price from '../components/Price'
 const FREE_SHIPPING_THRESHOLD = 75
 const SHIPPING_COST = 6.99
 const CURRENCY = 'SAR'
+const MERCHANT_COUNTRY = 'SA'
 const PUBLISHABLE_KEY = import.meta.env.VITE_MOYASAR_PUBLISHABLE_KEY
+const SAMSUNG_PAY_SERVICE_ID = import.meta.env.VITE_SAMSUNG_PAY_SERVICE_ID
+const SAMSUNG_PAY_ENVIRONMENT = import.meta.env.VITE_SAMSUNG_PAY_ENVIRONMENT || 'STAGE'
 
 export default function CheckoutPage() {
   const { cart } = useCart()
@@ -31,6 +34,9 @@ export default function CheckoutPage() {
       return
     }
 
+    const methods = ['creditcard', 'applepay']
+    if (SAMSUNG_PAY_SERVICE_ID) methods.push('samsungpay')
+
     window.Moyasar.init({
       element: '.mysr-form',
       amount: Math.round(total * 100),
@@ -39,7 +45,21 @@ export default function CheckoutPage() {
       publishable_api_key: PUBLISHABLE_KEY,
       callback_url: `${window.location.origin}/payment/callback`,
       supported_networks: ['visa', 'mastercard', 'mada'],
-      methods: ['creditcard'],
+      methods,
+      apple_pay: {
+        country: MERCHANT_COUNTRY,
+        label: 'Houksha Shop',
+        validate_merchant_url: 'https://api.moyasar.com/v1/applepay/initiate',
+      },
+      ...(SAMSUNG_PAY_SERVICE_ID && {
+        samsung_pay: {
+          service_id: SAMSUNG_PAY_SERVICE_ID,
+          order_number: `houksha-${Date.now()}`,
+          label: 'Houksha Shop',
+          country: MERCHANT_COUNTRY,
+          environment: SAMSUNG_PAY_ENVIRONMENT,
+        },
+      }),
       on_completed: async function (payment) {
         sessionStorage.setItem('lastPaymentId', payment.id)
       },
@@ -65,7 +85,7 @@ export default function CheckoutPage() {
             <span>Total</span>
             <span><Price amount={total} /></span>
           </div>
-          <Link to="/cart" className="link-btn">Back to cart</Link>
+          <Link to="/cart" className="link-btn" viewTransition>Back to cart</Link>
         </div>
         <div>
           {!PUBLISHABLE_KEY && (

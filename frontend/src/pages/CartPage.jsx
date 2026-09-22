@@ -22,7 +22,7 @@ export default function CartPage(){
           <BagIcon width={32} height={32} style={{ margin: '0 auto', color: 'var(--ink-faint)' }} />
           <h2>Your cart is empty</h2>
           <p>Add something you'll love — it only takes a minute.</p>
-          <Link to="/" className="btn btn-accent btn-lg">Continue shopping</Link>
+          <Link to="/" className="btn btn-accent btn-lg" viewTransition>Continue shopping</Link>
         </div>
       ) : (
         <div className="cart-layout">
@@ -71,7 +71,7 @@ export default function CartPage(){
               <span>Total</span>
               <span><Price amount={total} /></span>
             </div>
-            <button className="btn btn-accent btn-lg btn-block" onClick={() => navigate('/checkout')}>
+            <button className="btn btn-accent btn-lg btn-block" onClick={() => navigate('/checkout', { viewTransition: true })}>
               Checkout
             </button>
             <div className="trust-mini" style={{ marginTop: 18, paddingTop: 18 }}>
