@@ -34,7 +34,7 @@ export default function CheckoutPage() {
       return
     }
 
-    const methods = ['creditcard', 'applepay']
+    const methods = ['creditcard', 'applepay', 'stcpay']
     if (SAMSUNG_PAY_SERVICE_ID) methods.push('samsungpay')
 
     window.Moyasar.init({
