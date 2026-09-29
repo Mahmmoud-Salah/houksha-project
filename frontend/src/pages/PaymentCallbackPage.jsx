@@ -50,7 +50,7 @@ export default function PaymentCallbackPage() {
       <h1>{isSuccess ? 'Payment confirmed' : 'Payment didn’t go through'}</h1>
       <p className="result-sub">
         {isSuccess
-          ? "You're all set — a confirmation has been recorded for your order."
+          ? "You're all set. A confirmation has been recorded for your order."
           : message || 'The payment was declined or cancelled. No charge was made.'}
       </p>
 
@@ -75,8 +75,8 @@ export default function PaymentCallbackPage() {
       </div>
 
       <p className="result-footnote">
-        This screen reflects the redirect only — confirm the final status, amount, and currency
-        server-side via Moyasar's Fetch Payment API before shipping any order.
+        This screen only reflects the redirect. Confirm the final payment details server-side
+        via Moyasar's Fetch Payment API before shipping any order.
       </p>
     </div>
   )

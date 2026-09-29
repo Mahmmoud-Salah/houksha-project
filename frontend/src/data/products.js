@@ -37,7 +37,7 @@ const products = [
     reviews: 204,
     badge: null,
     description: 'Brew cafe-style espresso at home with 15-bar pressure extraction.',
-    image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1677281786399-1edfbca0561c?q=80&w=800&auto=format&fit=crop'
   }
 ]
 export default products

@@ -14,8 +14,8 @@ const HERO_SLIDES = [
 const HEADLINE_WORDS = [
   { text: 'Goods' },
   { text: 'worth' },
-  { text: 'keeping,', accent: 'keeping', suffix: ',' },
-  { text: 'delivered' },
+  { text: 'keeping.', accent: 'keeping', suffix: '.' },
+  { text: 'Delivered' },
   { text: 'fast.' },
 ]
 
@@ -23,7 +23,7 @@ export default function Hero(){
   return (
     <section className="hero">
       <div>
-        <span className="hero-eyebrow">New season, just landed</span>
+        <span className="hero-eyebrow">New arrivals</span>
         <h1 className="hero-headline">
           {HEADLINE_WORDS.map((word, i) => (
             <React.Fragment key={word.text}>
@@ -35,8 +35,8 @@ export default function Hero(){
           ))}
         </h1>
         <p className="lead">
-          A tightly curated shop of everyday essentials — built to last, priced fairly,
-          and shipped in days, not weeks.
+          A tightly curated shop of everyday essentials built to last and priced fairly.
+          Shipped in days, not weeks.
         </p>
         <div className="hero-ctas">
           <a href="#products" className="btn btn-accent btn-lg">Shop the collection</a>

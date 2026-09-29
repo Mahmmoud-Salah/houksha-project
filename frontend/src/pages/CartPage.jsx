@@ -21,7 +21,7 @@ export default function CartPage(){
         <div className="empty-state">
           <BagIcon width={32} height={32} style={{ margin: '0 auto', color: 'var(--ink-faint)' }} />
           <h2>Your cart is empty</h2>
-          <p>Add something you'll love — it only takes a minute.</p>
+          <p>Add something you'll love. It only takes a minute.</p>
           <Link to="/" className="btn btn-accent btn-lg" viewTransition>Continue shopping</Link>
         </div>
       ) : (
@@ -35,7 +35,7 @@ export default function CartPage(){
                     <strong>{it.product.name}</strong>
                     <span className="line-price"><Price amount={it.product.price * it.quantity} /></span>
                   </div>
-                  <p><Price amount={it.product.price} /> each</p>
+                  <p><Price amount={it.product.price} size={12} /> each</p>
                   <div className="row">
                     <div className="qty-stepper">
                       <button onClick={() => updateQuantity(it.product.id, it.quantity - 1)} aria-label="Decrease quantity">−</button>
